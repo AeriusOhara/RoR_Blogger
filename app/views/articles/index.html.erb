@@ -8,4 +8,10 @@
 	<% end %>
 </ul>
 
+<hr>
+
+<p>
+	<%= link_to ">> Browse Tags (#{ @tags.size })", tags_path, class: "sLink" %>
+</p>
+
 <%= link_to "Create a New Article", new_article_path, class: "new_article" %>

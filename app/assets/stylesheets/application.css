@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .sLink{
+	font-size: large;
+	border: 2px dotted gray;
+	padding: 0.2em;
+}
+
+hr{
+	margin: 1.3em 0em;
+}
