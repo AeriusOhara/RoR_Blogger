@@ -3,7 +3,37 @@
 <ul>
 	<% @tags.each do |t| %>
 		<li>
-			<%= link_to t.name, tag_path(t) %>
+			[<span class="delLink">
+				<%=	link_to "delete", tag_path(t.id), method: :delete,
+										 data: {confirm: "Are you sure you wish to delete the \"#{t.name}\" tag?"} %>
+			</span>]
+
+			→ <%= link_to t.name, tag_path(t) %>
+
+			<%
+				#Display the amount of articles the tag has
+				# linked to itself
+				@articles = Article.all
+				i = 0
+				articlesText = ""
+				@articles.each do |a|
+					a.tags.each do |tmpTag|
+						if tmpTag.name == t.name
+							i += 1
+						end
+					end
+				end
+
+				# Determine whether to use the plural word or not
+				if i == 1
+					articlesText = "article"
+				else
+					articlesText = "articles"
+				end
+			%>
+			<span class="irrText">
+				(<%= i %> <%= articlesText %>)
+			</span>
 		</li>
 	<% end %>
 </ul>
